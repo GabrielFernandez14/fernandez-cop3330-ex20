@@ -4,8 +4,6 @@
  * Exercise 20 - Multistate Sales Tax Calculator
  */
 
-// UNFINISHED, ASK ABOUT THE PROMPT'S WORDING FOR COUNTIES' TAX RATES
-
 package org.example;
 
 // Import necessary libraries
@@ -27,6 +25,14 @@ public class App
         double tax;
         double total;
         int flag = 0;
+        String wi = "wi";
+        String wisconsin = "wisconsin";
+        String ecc = "eau claire county";
+        String ec = "eau claire";
+        String dc = "dunn county";
+        String d = "d";
+        String il = "il";
+        String illinois = "illinois";
 
         // Prompt user for the order amount and the state they live in
         // and store these values
@@ -40,7 +46,8 @@ public class App
 
         // If the state is Wisconsin, we need to prompt user for their county,
         // I used a nested if statement to do this
-        if (state.equals("Wisconsin") || state.equals("WI")) {
+        if (wi.equals(state.toLowerCase()) ||
+                wisconsin.equals(state.toLowerCase())) {
             System.out.println("What county do you live in?");
             Scanner countyIn = new Scanner(System.in);
             // Scan the string until the next line is reached
@@ -48,12 +55,14 @@ public class App
 
             // If the county equals Eau Claire, add a tax of 0.005 in addition to the 5%
             // state tax
-            if (county.equals("Eau Claire county") || county.equals("Eau Claire")) {
+            if (ecc.equals(county.toLowerCase()) ||
+                    ec.equals(county.toLowerCase())) {
                 tax = order * ((WI_TAX + EAU_C_TAX) / 100);
                 total = order + tax;
             }
             // If it is Dunn county, add a tax of 0.004 instead
-            else if (county.equals("Dunn county") || county.equals("Dunn")) {
+            else if (dc.equals(county.toLowerCase()) ||
+                    d.equals(county.toLowerCase())) {
                 tax = order * ((WI_TAX + DUNN_C_TAX) / 100);
                 total = order + tax;
             }
@@ -64,7 +73,8 @@ public class App
             }
         }
         // If the state inputted is Illinois, apply the 8% state tax
-        else if (state.equals("Illinois") || state.equals("IL")) {
+        else if (il.equals(state.toLowerCase()) ||
+                illinois.equals(state.toLowerCase())) {
             tax = order * (IL_TAX / 100);
             total = order + tax;
         }
